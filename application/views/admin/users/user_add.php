@@ -43,74 +43,33 @@
                     <div class="">
                       <input type="text" name="username" class="form-control" id="username" placeholder="">
                     </div>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="firstname" class="control-label">Nama Lengkap</label>
-                    <div>
-                      <input type="text" name="firstname" class="form-control" id="firstname" placeholder="">
-                    </div>
-                  </div>
-                
+                  </div>          
+                 
                   <div class="form-group">
                     <label for="email" class="control-label">Email</label>
                     <div>
                       <input type="email" name="email" class="form-control" id="email" placeholder="">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="mobile_no" class="control-label">Telepon</label>
-                    <div>
-                      <input type="number" name="mobile_no" class="form-control" id="mobile_no" placeholder="">
-                    </div>
-                  </div>
-                 
-              </div>
-            </div>
-          </div>
-
-           <div class="col-md-6">
-              <div class="card card-success card-outline">
-                <div class="card-body box-profile">  
+                  
                   <div class="form-group">
                     <label for="password" class="control-label">Password</label>
                     <div>
                       <input type="password" name="password" class="form-control" id="password" placeholder="">
                     </div>
-                  </div>               
-                             
-
+                  </div>             
+                    
                   <div class="form-group">
-                    <label for="is_admin" class="control-label">Pilih Jabatan</label>
+                    <label for="role" class="control-label">Role</label>
                     <div>
-                      <select name="is_admin" class="form-control">
-                        <option value="">Pilih Jabatan</option>
-                        <option value="1">Administrator</option>
-                        <option value="2">TU Prodi</option>
-                        <option value="3">Reviewer</option>
-                        <option value="4">Dosen</option>
+                      <select name="role" class="form-control">
+                        <option value="">Pilih Role</option>
+                        <option value="1">Admin Divisi</option>
+                        <option value="2">Dosen Pembimbing</option>
+                        <option value="3">Residen</option>
                       </select>
                     </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="id_prodi" class="control-label">Pilih Program Studi</label>
-                    <div>
-                      <select name="id_prodi" class="form-control">
-                        <option value="">Pilih program Studi</option>
-                        <?php foreach($prodi as $prodi): ?>
-                          <option value="<?= $prodi['id_prodi']; ?>"><?= $prodi['prodi'];  ?></option>
-                        <?php endforeach; ?>
-                      </select>
-                    </div>
-                  </div> 
-
-                  <div class="form-group">
-                    <label for="foto_profil" class="control-label">Foto Profil (jpg/png)</label>
-                    <div>
-                      <input type="file" name="foto_profil" class="form-control" id="foto_profil" placeholder="">
-                    </div>
-                  </div>
+                  </div>          
 
                   <div class="form-group">
                     <div>

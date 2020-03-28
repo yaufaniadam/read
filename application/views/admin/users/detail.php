@@ -20,9 +20,9 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-4">
+         <!-- <div class="col-md-4">
 
-            <!-- Profile Image -->
+            <!-- Profile Image --
             <div class="card card-success card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
@@ -44,58 +44,36 @@
                 </div>
 
                 <h3 class="profile-username text-center"><?=$user['firstname'];?></h3>
-                <p class="text-muted text-center">
-
-                  <?php if($user['is_admin'] == 1) {
-
-                     echo "Administrator";
-
-                  } elseif($user['is_admin'] == 2) {
-
-                    echo "Tata Usaha Prodi";
-
-                  } elseif($user['is_admin'] == 3) {
-
-                    echo "Reviewer";
-
-                  } else {
-                    echo "Dosen";
-                  }
-
-
-                  ?>
-                    
-                </p>               
+                             
                
               </div>
-              <!-- /.card-body -->
+              <!-- /.card-body --
             </div>
-            <!-- /.card -->
+            <!-- /.card --
 
-            <!-- About Me Box -->
+            <!-- About Me Box --
            
           </div>
-          <!-- /.col -->
+          !-- /.col -->
           <div class="col-md-8">
              <div class="card card-warning card-outline">
               
               <div class="card-body">
 
-                <?php if($user['id_prodi']) { ?>
-                  <strong><i class="fas fa-book mr-1"></i> Program Studi</strong>
-                  <p class="text-muted">
-                    <?=$user['prodi']; ?>
-                  </p>
-
-                <?php } ?>
+                
+                <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
+                <p class="text-muted">
+                  <?php echo $user['nama_lengkap']; ?>
+                </p>
                 <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
                 <p class="text-muted">
                   <?php echo $user['email']; ?>
                 </p>
-                <strong><i class="fab fa-whatsapp mr-1"></i> No Ponsel</strong>
+                <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
                 <p class="text-muted">
-                  <?php echo $user['mobile_no']; ?>
+                  <?php echo $user['telp']; ?>
                 </p>
+               
 
                 
               </div>

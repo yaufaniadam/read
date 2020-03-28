@@ -11,15 +11,13 @@
 		public function get_users($role){
 			
 			if($role != '') {		
-				
-				return $this->db->query("select a.* from ci_users a
-		
-		  				where a.is_admin='$role' ");
-
-			}	else {
- 
-				return $this->db->query("select a.* from ci_users a");
-
+				return $this->db->query("SELECT a.* FROM ci_users a
+					WHERE a.is_admin != 1 AND a.role=$role
+					");
+			}	else { 
+				return $this->db->query("SELECT a.* FROM ci_users a
+					
+					WHERE a.is_admin != 1 ");
 			}			
 
 		}
@@ -28,9 +26,9 @@
 		public function count_all_users_by_role($role){
 
 			if($role != '') {		
-				$this->db->where('is_admin',$role);
+				$this->db->where('role',$role);
 			}
-			
+			$this->db->where('is_admin','0');
 			return $this->db->count_all_results('ci_users');
 		}
 
@@ -80,8 +78,13 @@
 		//---------------------------------------------------
 		// Get user detial by ID
 		public function get_user_by_id($id){
-			$query = $this->db->get_where('ci_users', array('id' => $id));
-			return $result = $query->row_array();
+			$query = $this->db->query("SELECT *, d.nama_lengkap, d.telp, r.nama_lengkap,r.telp
+			FROM ci_users a
+			LEFT JOIN residen r ON r.user_id=a.id
+			LEFT JOIN dosen d ON r.user_id=a.id
+			WHERE a.id='$id'
+			");
+			return $query->row_array();
 		}
 
 		//---------------------------------------------------

@@ -7,7 +7,7 @@ class Admin_Controller extends MY_Controller
         
         if( !($this->session->userdata('is_admin')) )
         {
-            redirect('dosen');
+            redirect('residen');
         } 
     }
 }

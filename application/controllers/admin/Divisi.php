@@ -33,9 +33,9 @@ class Users extends MY_Controller
 	{
 		if ($this->input->post('submit')) {
 			$this->form_validation->set_rules('username', 'Username', 'trim|required');
-		//	$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required');
+			$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required');
-		//	$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
+			$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
 			//$this->form_validation->set_rules('role', 'Role', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -43,13 +43,13 @@ class Users extends MY_Controller
 				$data['view'] = 'admin/users/user_add';
 				$this->load->view('layout', $data);
 			} else {
-				/*
+
 				$upload_path = './uploads/fotoProfil';
 
 				if (!is_dir($upload_path)) {
 					mkdir($upload_path, 0777, TRUE);
 				}
-				
+				//$newName = "hrd-".date('Ymd-His');
 				$config = array(
 					'upload_path' => $upload_path,
 					'allowed_types' => "jpg|png|jpeg",
@@ -59,20 +59,21 @@ class Users extends MY_Controller
 				$this->load->library('upload', $config);
 				$this->upload->do_upload('foto_profil');
 				$foto_profil = $this->upload->data();
-				*/
+
+
 				$data = array(
 					'username' => $this->input->post('username'),
-				//	'firstname' => $this->input->post('firstname'),
+					'firstname' => $this->input->post('firstname'),
 					'email' => $this->input->post('email'),
-				//	'mobile_no' => $this->input->post('mobile_no'),
-				//	'id_prodi' => $this->input->post('id_prodi'),
-					'role' => $this->input->post('role'),
+					'mobile_no' => $this->input->post('mobile_no'),
+					'id_prodi' => $this->input->post('id_prodi'),
+					'is_admin' => $this->input->post('is_admin'),
 					'password' =>  password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 					'created_at' => date('Y-m-d : h:m:s'),
 					'updated_at' => date('Y-m-d : h:m:s'),
 					'is_verify' => 1,
 					'is_active' => 1,
-				//	'photo' => $upload_path . '/' . $foto_profil['file_name'],
+					'photo' => $upload_path . '/' . $foto_profil['file_name'],
 				);
 
 				$data = $this->security->xss_clean($data);
@@ -93,9 +94,9 @@ class Users extends MY_Controller
 	{
 		if ($this->input->post('submit')) {
 			$this->form_validation->set_rules('username', 'Username', 'trim|required');
-		//	$this->form_validation->set_rules('firstname', 'Nama Lengkap', 'trim|required');
+			$this->form_validation->set_rules('firstname', 'Nama Lengkap', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required');
-		//	$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
+			$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
 
 			if ($this->form_validation->run() == FALSE) {
 				$data['user'] = $this->user_model->get_user_by_id($id);
@@ -103,7 +104,7 @@ class Users extends MY_Controller
 				$this->load->view('layout', $data);
 			} else {
 
-				/*$upload_path = './uploads/fotoProfil';
+				$upload_path = './uploads/fotoProfil';
 
 				if (!is_dir($upload_path)) {
 					mkdir($upload_path, 0777, TRUE);
@@ -118,15 +119,15 @@ class Users extends MY_Controller
 				$this->load->library('upload', $config);
 				$this->upload->do_upload('foto_profil');
 				$foto_profil = $this->upload->data();
-				*/
+
 				$data = array(
 					'username' => $this->input->post('username'),
-				//	'firstname' => $this->input->post('firstname'),
+					'firstname' => $this->input->post('firstname'),
 					'email' => $this->input->post('email'),
-				//	'mobile_no' => $this->input->post('mobile_no'),
+					'mobile_no' => $this->input->post('mobile_no'),
 					'password' => ($this->input->post('password') !== "" ? password_hash($this->input->post('password'), PASSWORD_BCRYPT) : $this->input->post('password_hidden')),
 					'updated_at' => date('Y-m-d : h:m:s'),
-				//	'photo' => ($foto_profil['file_name']) !== "" ? $upload_path . '/' . $foto_profil['file_name'] : $this->input->post('foto_profil_hidden'),
+					'photo' => ($foto_profil['file_name']) !== "" ? $upload_path . '/' . $foto_profil['file_name'] : $this->input->post('foto_profil_hidden'),
 				);
 
 				$data = $this->security->xss_clean($data);
